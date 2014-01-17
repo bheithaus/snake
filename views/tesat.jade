@@ -1,0 +1,38 @@
+html
+  head
+    title Snake
+    link(rel='stylesheet', type='text/css', href='/stylesheets/snake.css')
+    script(src='/javascripts/jquery-1.9.1.js', type='text/javascript')
+    script(src='/javascripts/jquery.scrollTo.js', type='text/javascript')
+    script(src='/javascripts/underscore.js', type='text/javascript')
+      
+    style.
+      div[data-x] {
+        display:inline-block;
+        width: 1%;
+        height:1%;
+      }
+
+    
+
+  body
+    div(style="height:2000px; width: 2000px;")
+
+    script.
+      var $main = $('div');
+      for (var x = 0; x < 100; x++) {
+        for (var y = 0; y < 100; y++) {
+          $main.append('<div data-x="'+ x +'" data-y="'+ y +'">');
+        }
+      }
+      var r,b,g
+        , x=500,y=300;
+      $.scrollTo(x, y);
+      setInterval(function () {
+        $('[data-x="'+ Math.floor(Math.random() * 100) +'"][data-y="'+ Math.floor(Math.random() * 100) +'"]')
+          .css('background','rgb('+ Math.floor(Math.random() * 255) +','+ Math.floor(Math.random() * 255) +','+ Math.floor(Math.random() * 255) +')')
+        x+= Math.floor((Math.random() * 1000 - 500)/4 )
+        y+= Math.floor((Math.random() * 1000 - 500)/4 )
+        $.scrollTo(x,y);
+
+      }, 4);
